@@ -6,8 +6,8 @@ import Wallet from './images/Wallet.png';
 import HomeScreen from './images/Screenshot.png';
 import Mail from './images/Mail.png';
 import Pic from './images/Picture.png';
-import Down from './images/Down.png'; // Replace with your button icon
-import Airdrop from './images/Airdrop.png'; // Replace with your button icon
+import Down from './images/Down.png'; 
+import Airdrop from './images/Airdrop.png'; 
 
 const App = () => {
   return (
