@@ -1,117 +1,99 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { SafeAreaView, View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native';
+import Qr from './images/Qr.jpg';
+import Iconcard from './images/Share.png';
+import Wallet from './images/Wallet.png';
+import HomeScreen from './images/Screenshot.png';
+import Mail from './images/Mail.png';
+import Pic from './images/Picture.png';
+import Down from './images/Down.png'; // Replace with your button icon
+import Airdrop from './images/Airdrop.png'; // Replace with your button icon
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
-
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
+    <SafeAreaView style={styles.container}>
+      <TouchableOpacity style={styles.button} onPress={() => alert('Button Pressed!')}>
+        <Image source={Down} style={styles.buttonIcon} />
+        <Text style={styles.buttonText}>Share My Card</Text>
+      </TouchableOpacity>
+      <Image source={Qr} style={styles.image} />
+      <View style={styles.box}>
+        <View style={styles.iconRow}>
+          <Image source={Iconcard} style={styles.icon} />
+          <Text>Share my card</Text>
         </View>
-      </ScrollView>
+        <View style={styles.iconRow}>
+          <Image source={Wallet} style={styles.icon} />
+          <Text>Add to card wallet</Text>
+        </View>
+        <View style={styles.iconRow}>
+          <Image source={HomeScreen} style={styles.icon} />
+          <Text>Add card to homescreen</Text>
+        </View>
+        <View style={styles.iconRow}>
+          <Image source={Mail} style={styles.icon} />
+          <Text>Create email signature</Text>
+        </View>
+        <View style={styles.iconRow}>
+          <Image source={Pic} style={styles.icon} />
+          <Text>Virtual background</Text>
+        </View>
+      </View>
+      <TouchableOpacity style={styles.button} onPress={() => alert('Another Button Pressed!')}>
+        <Image source={Airdrop} style={styles.buttonIcon} />
+        <Text style={styles.buttonText}>Share With Airdrop</Text>
+      </TouchableOpacity>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    padding: 16,
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  image: {
+    width: 230,
+    height: 230,
+    resizeMode: 'contain',
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
+  box: {
+    width: '80%',
+    backgroundColor: '#d3d3d3', // Light gray color
+    borderRadius: 10,
+    padding: 16,
+    alignItems: 'flex-start',
   },
-  highlight: {
-    fontWeight: '700',
+  iconRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginVertical: 8,
+  },
+  icon: {
+    width: 30,
+    height: 30,
+    marginRight: 8,
+  },
+  button: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#FF612F',
+    padding: 15,
+    paddingLeft:65,
+    paddingRight:65,
+    borderRadius: 50,
+  },
+  buttonText: {
+    color: 'white',
+    fontWeight: 'bold',
+    fontSize:17,
+    marginLeft: 8,
+  },
+  buttonIcon: {
+    width: 20,
+    height: 20,
   },
 });
 
